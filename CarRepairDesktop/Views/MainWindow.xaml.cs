@@ -23,5 +23,10 @@ namespace CarRepairDesktop.Views
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

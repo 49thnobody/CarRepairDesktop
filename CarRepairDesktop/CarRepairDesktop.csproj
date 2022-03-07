@@ -156,6 +156,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\exit.png" />
     <Content Include="Model\EntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityModel.Context.cs</LastGenOutput>
