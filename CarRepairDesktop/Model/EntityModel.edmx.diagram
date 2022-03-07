@@ -7,11 +7,11 @@
       <Diagram DiagramId="27f3c93fe5044be9813484518558e1cf" Name="Diagram1">
         <EntityTypeShape EntityType="CarRepairModel.Car" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CarRepairModel.CarModel" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRepairModel.Client" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRepairModel.Employee" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRepairModel.Client" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRepairModel.Employee" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CarRepairModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CarRepairModel.Service" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRepairModel.Workshop" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRepairModel.Workshop" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="CarRepairModel.FK_Car_CarModel" ManuallyRouted="false" />
         <AssociationConnector Association="CarRepairModel.FK_Car_Client" ManuallyRouted="false" />
         <AssociationConnector Association="CarRepairModel.FK_Order_Car" ManuallyRouted="false" />
