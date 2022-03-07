@@ -4,6 +4,41 @@
              xmlns:local="clr-namespace:CarRepairDesktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="regular" Color="#BDCCFF"/>
+        <SolidColorBrush x:Key="additional" Color="#AFCFEA"/>
+        <SolidColorBrush x:Key="accent" Color="#FFE9A0"/>
+        <SolidColorBrush x:Key="critical" Color="#FF756B"/>
+
+        <Style TargetType="Page">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBlock"
+               x:Key="Tip">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <Style TargetType="TextBlock"
+               x:Key="SemiHeader">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBlock"
+               x:Key="Header">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="{DynamicResource regular}"/>
+        </Style>
     </Application.Resources>
 </Application>
