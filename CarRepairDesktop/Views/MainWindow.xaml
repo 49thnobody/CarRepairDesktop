@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarRepairDesktop.Views"
         mc:Ignorable="d"
-        Height="800" Width="1200" WindowStyle="None">
+        Height="800" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -17,31 +17,22 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <!--Header-->
         <Grid Grid.Row="0"
               Grid.ColumnSpan="2"
               Background="{StaticResource additional}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0"
-                       Grid.Column="0" Grid.ColumnSpan="2"
+                       Grid.Column="0"
                        Text="Автомастерские"
                        Style="{StaticResource Header}"/>
 
-            <Button Grid.Column="1"
-                    Grid.Row="0"
-                    Background="{StaticResource critical}"
-                    x:Name="btnClose"
-                    Click="btnClose_Click"
-                    BorderBrush="Black">
-                <Button.Content>
-                    <Image Source="/Images/exit.png"
-                           Margin="10"/>
-                </Button.Content>
-            </Button>
+        </Grid>
 
+        <!--Vertical menu-->
+        <Grid Grid.Column="0"
+              Grid.Row="1">
+            
         </Grid>
     </Grid>
 </Window>
