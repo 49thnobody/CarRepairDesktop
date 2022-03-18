@@ -20,7 +20,7 @@
         <!--Header-->
         <Grid Grid.Row="0"
               Grid.ColumnSpan="2"
-              Background="{StaticResource additional}">
+              Background="{StaticResource regular}">
 
             <TextBlock Grid.Row="0"
                        Grid.Column="0"
@@ -32,7 +32,41 @@
         <!--Vertical menu-->
         <Grid Grid.Column="0"
               Grid.Row="1">
-            
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0"
+                    Content="Клиенты"
+                    x:Name="btnClients"
+                    Click="btnClients_Click"/>
+            <Button Grid.Row="1"
+                    Content="Автомобили"
+                    x:Name="btnCars"
+                    Click="btnCars_Click"/>
+            <Button Grid.Row="2"
+                    Content="Мастерские"
+                    x:Name="btnWorkshops"
+                    Click="btnWorkshops_Click"/>
+            <Button Grid.Row="3"
+                    Content="Мастера"
+                    x:Name="btnEmployees"
+                    Click="btnEmployees_Click"/>
+            <Button Grid.Row="4"
+                    Content="Обслуживание"
+                    x:Name="btnOrders"
+                    Click="btnOrders_Click"/>
         </Grid>
+        
+        <!--Main frame-->
+        <Frame Grid.Row="1"
+               Grid.Column="1"
+               NavigationUIVisibility="Hidden"
+               x:Name="mainFrame"/>
     </Grid>
 </Window>

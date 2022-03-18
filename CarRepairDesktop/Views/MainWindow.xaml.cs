@@ -23,5 +23,30 @@ namespace CarRepairDesktop.Views
         {
             InitializeComponent();
         }
+
+        private void btnClients_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCars_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnWorkshops_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEmployees_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOrders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
