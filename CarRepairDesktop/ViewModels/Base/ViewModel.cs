@@ -1,9 +1,11 @@
-﻿using System.ComponentModel;
+﻿using CarRepairDesktop.Model;
+using System.ComponentModel;
+using System.Data.Entity;
 using System.Runtime.CompilerServices;
 
 namespace CarRepairDesktop.ViewModels.Base
 {
-    public class ViewModel : INotifyPropertyChanged
+    public abstract class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,5 +20,17 @@ namespace CarRepairDesktop.ViewModels.Base
             OnPropertyChanged(propertyName);
             return true;
         }
+
+        protected EntityModel _dbInstance;
+
+        public ViewModel()
+        {
+            _dbInstance = EntityModel.GetInstance();
+        }
+
+        public abstract string Check();
+        public abstract string Add();
+        public abstract string Edit();
+        public abstract string Delete();
     }
 }

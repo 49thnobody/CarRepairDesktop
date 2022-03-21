@@ -80,6 +80,7 @@
     <Compile Include="Model\Client.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DBExtensions.cs" />
     <Compile Include="Model\Employee.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -108,6 +109,7 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
