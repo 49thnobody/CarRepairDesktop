@@ -45,7 +45,8 @@ namespace CarRepairDesktop.ViewModels
 
         public override string Add()
         {
-            if(Check()!=string.Empty) return Check();
+            var check = Check();
+            if(check != string.Empty) return check;
 
             try
             {
@@ -62,7 +63,8 @@ namespace CarRepairDesktop.ViewModels
 
         public override string Edit()
         {
-            if (Check() != string.Empty) return Check();
+            var check = Check();
+            if (check != string.Empty) return check;
 
             try
             {
