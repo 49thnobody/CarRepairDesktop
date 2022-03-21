@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CarRepairModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CarRepairModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="CarNumber" />
           </Key>
-          <Property Name="CarNumber" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="CarNumber" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="CarModelID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="OwnerID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="OwnerID" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="Power" Type="int" />
           <Property Name="ManufactureYear" Type="int" />
           <Property Name="Color" Type="nvarchar" MaxLength="50" />
@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="DriversLicense" />
           </Key>
-          <Property Name="DriversLicense" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DriversLicense" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
@@ -37,7 +37,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
           <Property Name="Rank" Type="int" Nullable="false" />
           <Property Name="WorkshopID" Type="int" Nullable="false" />
@@ -48,7 +48,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
-          <Property Name="CarID" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="CarID" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="PlannedEndDate" Type="date" Nullable="false" />
           <Property Name="RealEndDate" Type="date" Nullable="false" />
@@ -58,6 +58,7 @@
             <PropertyRef Name="Title" />
           </Key>
           <Property Name="Title" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Price" Type="float" />
         </EntityType>
         <EntityType Name="ServicesInOrder">
           <Key>
@@ -198,8 +199,7 @@
             <End Role="ServicesInOrder" EntitySet="ServicesInOrder" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CarRepairModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -207,9 +207,9 @@
           <Key>
             <PropertyRef Name="CarNumber" />
           </Key>
-          <Property Name="CarNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CarModelID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="OwnerID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="OwnerID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Power" Type="Int32" />
           <Property Name="ManufactureYear" Type="Int32" />
           <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -228,7 +228,7 @@
           <Key>
             <PropertyRef Name="DriversLicense" />
           </Key>
-          <Property Name="DriversLicense" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DriversLicense" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
@@ -240,7 +240,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Rank" Type="Int32" Nullable="false" />
           <Property Name="WorkshopID" Type="Int32" Nullable="false" />
@@ -253,7 +253,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="CarID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PlannedEndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="RealEndDate" Type="DateTime" Nullable="false" Precision="0" />
@@ -267,6 +267,7 @@
           </Key>
           <Property Name="Title" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.ServicesInOrder" FromRole="Service" ToRole="Order" />
+          <Property Name="Price" Type="Double" />
         </EntityType>
         <EntityType Name="Workshop">
           <Key>
@@ -437,6 +438,7 @@
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="CarRepairModel.Service">
               <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
