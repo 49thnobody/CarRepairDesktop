@@ -17,15 +17,27 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!--Header-->
+        <!--Header and workshop selection-->
         <Grid Grid.Row="0"
               Grid.ColumnSpan="2"
               Background="{StaticResource regular}">
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
             <TextBlock Grid.Row="0"
                        Grid.Column="0"
+                       Grid.ColumnSpan="2"
                        Text="Автомастерские"
                        Style="{StaticResource Header}"/>
+
+            <ComboBox Grid.Row="0"
+                      Grid.Column="1"
+                      Margin="10,20"
+                      x:Name="cbWorkshop"
+                      SelectionChanged="cbWorkshop_SelectionChanged"/>
 
         </Grid>
 
@@ -62,7 +74,7 @@
                     x:Name="btnOrders"
                     Click="btnOrders_Click"/>
         </Grid>
-        
+
         <!--Main frame-->
         <Frame Grid.Row="1"
                Grid.Column="1"

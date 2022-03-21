@@ -37,11 +37,15 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-        
+
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Background" Value="{DynamicResource additional}"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="10"/>
         </Style>
     </Application.Resources>
 </Application>

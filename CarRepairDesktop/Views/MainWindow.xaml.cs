@@ -36,5 +36,10 @@ namespace CarRepairDesktop.Views
         {
 
         }
+
+        private void cbWorkshop_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
