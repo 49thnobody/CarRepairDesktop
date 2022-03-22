@@ -17,16 +17,16 @@ namespace CarRepairDesktop.ViewModels
         private List<Car> _sortedEntities;
 
 
-        private Car _selectedCar;
-        public Car SelectedCar { get => _selectedCar; set => _selectedCar = value; }
+        private Car _selectedEntity;
+        public Car SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
         public override string Check()
         {
-            if (SelectedCar == null) return "Нет машины для проверки.";
+            if (SelectedEntity == null) return "Нет машины для проверки.";
             StringBuilder errors = new StringBuilder();
 
             Regex regex = new Regex("\\w\\d{3}\\w{2}");
-            var matches = regex.Matches(SelectedCar.CarNumber);
+            var matches = regex.Matches(SelectedEntity.CarNumber);
             if (matches.Count == 0)
                 errors.AppendLine("Невалидный номер машины. (Пример B909NM)");
 
@@ -42,7 +42,7 @@ namespace CarRepairDesktop.ViewModels
 
             try
             {
-                _dbInstance.Cars.Add(SelectedCar);
+                _dbInstance.Cars.Add(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно добавлена.";
@@ -74,7 +74,7 @@ namespace CarRepairDesktop.ViewModels
         {
             try
             {
-                _dbInstance.Cars.Remove(SelectedCar);
+                _dbInstance.Cars.Remove(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно удалена.";

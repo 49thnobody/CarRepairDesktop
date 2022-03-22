@@ -16,18 +16,18 @@ namespace CarRepairDesktop.ViewModels
         private List<Order> _sortedEntities;
 
 
-        private Order _selectedOrder;
-        public Order SelectedOrder { get => _selectedOrder; set => _selectedOrder = value; }
+        private Order _selectedEntity;
+        public Order SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
         public override string Check()
         {
-            if (SelectedOrder == null) return "Нет заказа для проверки.";
+            if (SelectedEntity == null) return "Нет заказа для проверки.";
             StringBuilder errors = new StringBuilder();
 
-            if (SelectedOrder.PlannedEndDate == null)
+            if (SelectedEntity.PlannedEndDate == null)
                 errors.AppendLine("Плановая дата окончания не указана.");
 
-            if (SelectedOrder.Services.Count == 0)
+            if (SelectedEntity.Services.Count == 0)
                 errors.AppendLine("В заказе нет услуг.");
 
             if (errors.Length > 0)
@@ -40,11 +40,11 @@ namespace CarRepairDesktop.ViewModels
             var check = Check();
             if (check != string.Empty) return check;
 
-            SelectedOrder.StartDate = DateTime.Now;
+            SelectedEntity.StartDate = DateTime.Now;
 
             try
             {
-                _dbInstance.Orders.Add(SelectedOrder);
+                _dbInstance.Orders.Add(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно добавлена.";
@@ -76,7 +76,7 @@ namespace CarRepairDesktop.ViewModels
         {
             try
             {
-                _dbInstance.Orders.Remove(SelectedOrder);
+                _dbInstance.Orders.Remove(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно удалена.";

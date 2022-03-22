@@ -16,24 +16,24 @@ namespace CarRepairDesktop.ViewModels
         private List<Workshop> _sortedEntities;
 
 
-        private Workshop _selectedWorkshop;
-        public Workshop SelectedWorkshop { get => _selectedWorkshop; set => _selectedWorkshop = value; }
+        private Workshop _selectedEntity;
+        public Workshop SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
         public override string Check()
         {
-            if (SelectedWorkshop == null) return "Нет мастерской для проверки.";
+            if (SelectedEntity == null) return "Нет мастерской для проверки.";
             StringBuilder errors = new StringBuilder();
 
-            if (string.IsNullOrEmpty(SelectedWorkshop.Title))
+            if (string.IsNullOrEmpty(SelectedEntity.Title))
                 errors.AppendLine("Название услуги не введено.");
-            if (string.IsNullOrEmpty(SelectedWorkshop.Address))
+            if (string.IsNullOrEmpty(SelectedEntity.Address))
                 errors.AppendLine("Название услуги не введено.");
             errors.AppendLine("Фио казано неполностью (требуется хотя бы фамилия и имя).");
-            if (string.IsNullOrEmpty(SelectedWorkshop.Phone))
+            if (string.IsNullOrEmpty(SelectedEntity.Phone))
                 errors.AppendLine("Телефон не указан.");
-            else if (SelectedWorkshop.Phone.Length != 6)
+            else if (SelectedEntity.Phone.Length != 6)
                 errors.AppendLine("Размер поля Телефон не соблюден (6 символов).");
-            else if (!SelectedWorkshop.Phone.All(char.IsDigit))
+            else if (!SelectedEntity.Phone.All(char.IsDigit))
                 errors.AppendLine("Телефон должен содержать только цифры.");
 
             if (errors.Length > 0)
@@ -48,7 +48,7 @@ namespace CarRepairDesktop.ViewModels
 
             try
             {
-                _dbInstance.Workshops.Add(SelectedWorkshop);
+                _dbInstance.Workshops.Add(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно добавлена.";
@@ -80,7 +80,7 @@ namespace CarRepairDesktop.ViewModels
         {
             try
             {
-                _dbInstance.Workshops.Remove(SelectedWorkshop);
+                _dbInstance.Workshops.Remove(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно удалена.";

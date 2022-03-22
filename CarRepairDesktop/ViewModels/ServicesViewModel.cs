@@ -16,18 +16,18 @@ namespace CarRepairDesktop.ViewModels
         private List<Service> _sortedEntities;
 
 
-        private Service _selectedService;
-        public Service SelectedService { get => _selectedService; set => _selectedService = value; }
+        private Service _selectedEntity;
+        public Service SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
         public override string Check()
         {
-            if (SelectedService == null) return "Нет услуги для проверки.";
+            if (SelectedEntity == null) return "Нет услуги для проверки.";
             StringBuilder errors = new StringBuilder();
 
-            if (string.IsNullOrEmpty(SelectedService.Title))
+            if (string.IsNullOrEmpty(SelectedEntity.Title))
                 errors.AppendLine("Название услуги не введено.");
 
-            if (SelectedService.Price < 0)
+            if (SelectedEntity.Price < 0)
                 errors.AppendLine("Стоимость услуги не может быть отрицательной.");
 
             if (errors.Length > 0)
@@ -42,7 +42,7 @@ namespace CarRepairDesktop.ViewModels
 
             try
             {
-                _dbInstance.Services.Add(SelectedService);
+                _dbInstance.Services.Add(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно добавлена.";
@@ -74,7 +74,7 @@ namespace CarRepairDesktop.ViewModels
         {
             try
             {
-                _dbInstance.Services.Remove(SelectedService);
+                _dbInstance.Services.Remove(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно удалена.";

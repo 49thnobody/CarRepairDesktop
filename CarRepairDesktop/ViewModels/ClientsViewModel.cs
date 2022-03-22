@@ -16,26 +16,26 @@ namespace CarRepairDesktop.ViewModels
         private List<Client> _sortedEntities;
 
 
-        private Client _selectedClient;
-        public Client SelectedClient { get => _selectedClient; set => _selectedClient = value; }
+        private Client _selectedEntity;
+        public Client SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
         public override string Check()
         {
-            if (SelectedClient == null) return "Нет клиента для проверки.";
+            if (SelectedEntity == null) return "Нет клиента для проверки.";
             StringBuilder errors = new StringBuilder();
-            if (SelectedClient.DriversLicense.Length < 8 || !SelectedClient.DriversLicense.All(char.IsDigit))
+            if (SelectedEntity.DriversLicense.Length < 8 || !SelectedEntity.DriversLicense.All(char.IsDigit))
                 errors.AppendLine("Водительское удостоверение может содержать от 8 до 12 цифр.");
-            if (SelectedClient.FullName.Length > 50)
+            if (SelectedEntity.FullName.Length > 50)
                 errors.AppendLine("Размер поля ФИО превышен (50 символов).");
-            if (string.IsNullOrEmpty(SelectedClient.FullName))
+            if (string.IsNullOrEmpty(SelectedEntity.FullName))
                 errors.AppendLine("ФИО не указано.");
-            else if (SelectedClient.FullName.Split(' ').Length < 2)
+            else if (SelectedEntity.FullName.Split(' ').Length < 2)
                 errors.AppendLine("Фио казано неполностью (требуется хотя бы фамилия и имя).");
-            if (string.IsNullOrEmpty(SelectedClient.Phone))
+            if (string.IsNullOrEmpty(SelectedEntity.Phone))
                 errors.AppendLine("Телефон не указан.");
-            else if (SelectedClient.Phone.Length!=11)
+            else if (SelectedEntity.Phone.Length!=11)
                 errors.AppendLine("Размер поля Телефон не соблюден (11 символов).");
-            else if (!SelectedClient.Phone.All(char.IsDigit))
+            else if (!SelectedEntity.Phone.All(char.IsDigit))
                 errors.AppendLine("Телефон должен содержать только цифры.");
 
             if(errors.Length > 0)
@@ -50,7 +50,7 @@ namespace CarRepairDesktop.ViewModels
 
             try
             {
-                _dbInstance.Clients.Add(SelectedClient);
+                _dbInstance.Clients.Add(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно добавлена.";
@@ -82,7 +82,7 @@ namespace CarRepairDesktop.ViewModels
         {
             try
             {
-                _dbInstance.Clients.Remove(SelectedClient);
+                _dbInstance.Clients.Remove(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно удалена.";

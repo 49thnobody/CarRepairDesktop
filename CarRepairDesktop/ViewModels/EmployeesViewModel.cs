@@ -16,27 +16,27 @@ namespace CarRepairDesktop.ViewModels
         private List<Employee> _sortedEntities;
 
 
-        private Employee _selectedEmployee;
-        public Employee SelectedEmployee { get => _selectedEmployee; set => _selectedEmployee = value; }
+        private Employee _selectedEntity;
+        public Employee SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
         public override string Check()
         {
-            if (SelectedEmployee == null) return "Нет мастера для проверки.";
+            if (SelectedEntity == null) return "Нет мастера для проверки.";
             StringBuilder errors = new StringBuilder();
 
-            if (SelectedEmployee.FullName.Length > 50)
+            if (SelectedEntity.FullName.Length > 50)
                 errors.AppendLine("Размер поля ФИО превышен (50 символов).");
-            if (string.IsNullOrEmpty(SelectedEmployee.FullName))
+            if (string.IsNullOrEmpty(SelectedEntity.FullName))
                 errors.AppendLine("ФИО не указано.");
-            else if (SelectedEmployee.FullName.Split(' ').Length < 2)
+            else if (SelectedEntity.FullName.Split(' ').Length < 2)
                 errors.AppendLine("Фио казано неполностью (требуется хотя бы фамилия и имя).");
-            if (string.IsNullOrEmpty(SelectedEmployee.Phone))
+            if (string.IsNullOrEmpty(SelectedEntity.Phone))
                 errors.AppendLine("Телефон не указан.");
-            else if (SelectedEmployee.Phone.Length != 11)
+            else if (SelectedEntity.Phone.Length != 11)
                 errors.AppendLine("Размер поля Телефон не соблюден (11 символов).");
-            else if (!SelectedEmployee.Phone.All(char.IsDigit))
+            else if (!SelectedEntity.Phone.All(char.IsDigit))
                 errors.AppendLine("Телефон должен содержать только цифры.");
-            if (SelectedEmployee.Rank < 1 || SelectedEmployee.Rank > 7)
+            if (SelectedEntity.Rank < 1 || SelectedEntity.Rank > 7)
                 errors.AppendLine("Разряд не может быть ниже 1 или выше 7.");
 
             if (errors.Length > 0)
@@ -51,7 +51,7 @@ namespace CarRepairDesktop.ViewModels
 
             try
             {
-                _dbInstance.Employees.Add(SelectedEmployee);
+                _dbInstance.Employees.Add(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно добавлена.";
@@ -83,7 +83,7 @@ namespace CarRepairDesktop.ViewModels
         {
             try
             {
-                _dbInstance.Employees.Remove(SelectedEmployee);
+                _dbInstance.Employees.Remove(SelectedEntity);
                 _dbInstance.SaveChanges();
                 SortedEntities = Entities;
                 return "Запись успешно удалена.";
