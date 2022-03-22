@@ -92,5 +92,10 @@ namespace CarRepairDesktop.ViewModels
                 return ex.Message;
             }
         }
+
+        public ClientsViewModel()
+        {
+            SortedEntities = Entities;
+        }
     }
 }
