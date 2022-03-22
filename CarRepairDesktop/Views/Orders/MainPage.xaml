@@ -25,7 +25,13 @@
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Мастер" Binding="{Binding Empliyee.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Заказчик" Binding="{Binding Car.Client.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Номер машины" Binding="{Binding Car.CarNumber}" Width="*"/>
+                <DataGridTextColumn Header="Марка машины" Binding="{Binding Car.CarModel.Title}" Width="*"/>
+                <DataGridTextColumn Header="Дата начала" Binding="{Binding StartDate}" Width="*"/>
+                <DataGridTextColumn Header="План. дата окнчания" Binding="{Binding PlannedEndDate}" Width="*"/>
+                <DataGridTextColumn Header="Реал. дата окнчания" Binding="{Binding RealEndDate}" Width="*"/>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
