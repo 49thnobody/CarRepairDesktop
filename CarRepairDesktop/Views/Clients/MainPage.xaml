@@ -23,8 +23,8 @@
                    Grid.Row="0"/>
 
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding SortedClients}"
-                  SelectedItem="{Binding SelectedClient}"
+                  ItemsSource="{Binding SortedEntities}"
+                  SelectedItem="{Binding SelectedEntity}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
             <DataGrid.Columns>

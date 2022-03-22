@@ -24,8 +24,8 @@
                    Grid.Row="0"/>
 
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding SortedEmployees}"
-                  SelectedItem="{Binding SelectedEmployee}"
+                  ItemsSource="{Binding SortedEntities}"
+                  SelectedItem="{Binding SelectedEntity}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
             
