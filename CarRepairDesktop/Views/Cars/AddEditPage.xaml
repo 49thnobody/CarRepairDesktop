@@ -9,6 +9,31 @@
       Title="AddEditPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnOk"
+                    Click="btnOk_Click"
+                    Content="Ок"
+                    Width="120"
+                    Grid.Column="0"/>
+            <Button x:Name="btnBack"
+                    Click="btnBack_Click"
+                    Content="Назад"
+                    Width="120"
+                    Grid.Column="1"/>
+        </Grid>
     </Grid>
 </Page>
