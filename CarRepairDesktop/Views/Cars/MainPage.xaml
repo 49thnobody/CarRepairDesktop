@@ -9,6 +9,51 @@
       Title="MainPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource SemiHeader}"
+                   Text="Услуги"
+                   Grid.Row="0"/>
+
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding SortedCars}"
+                  SelectedItem="{Binding SelectedCar}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="" Binding="{Binding Title}" Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEdit"
+                                    Click="btnEdit_Click"
+                                    Content="Изменить"
+                                    Width="auto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnDelete"
+                                    Click="btnDelete_Click"
+                                    Content="Изменить"
+                                    Width="auto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2">
+            <Button Width="120"
+                    Content="Добавить"
+                    x:Name="btnAdd"
+                    Click="btnAdd_Click"/>
+        </Grid>
     </Grid>
 </Page>

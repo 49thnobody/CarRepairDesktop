@@ -11,5 +11,20 @@ namespace CarRepairDesktop.Views.Orders
         {
             InitializeComponent();
         }
+
+        private void btnEdit_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

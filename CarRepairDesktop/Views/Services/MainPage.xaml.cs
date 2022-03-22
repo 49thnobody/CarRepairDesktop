@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace CarRepairDesktop.Views.Cars
+namespace CarRepairDesktop.Views.Services
 {
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
@@ -12,7 +12,7 @@ namespace CarRepairDesktop.Views.Cars
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnEdit_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
         }
@@ -22,7 +22,7 @@ namespace CarRepairDesktop.Views.Cars
 
         }
 
-        private void btnEdit_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
         }
