@@ -23,8 +23,18 @@
               Grid.ColumnSpan="2"
               Background="{StaticResource regular}">
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Source="/Images/logo.png"
+                   Margin="10"/>
+
             <TextBlock Grid.Row="0"
-                       Grid.Column="0"
+                       Grid.Column="1"
                        Text="Автомастерские"
                        Style="{StaticResource Header}"/>
 

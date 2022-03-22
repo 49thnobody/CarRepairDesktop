@@ -25,7 +25,12 @@
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="" Binding="{Binding CarNumber}" Width="*"/>
+                <DataGridTextColumn Header="" Binding="{Binding Client.FullName}" Width="*"/>
+                <DataGridTextColumn Header="" Binding="{Binding CarModel.Title}" Width="*"/>
+                <DataGridTextColumn Header="" Binding="{Binding Power}" Width="*"/>
+                <DataGridTextColumn Header="" Binding="{Binding ManufactureYear}" Width="*"/>
+                <DataGridTextColumn Header="" Binding="{Binding Color}" Width="*"/>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
