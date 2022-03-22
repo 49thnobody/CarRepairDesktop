@@ -29,7 +29,7 @@
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Мастер" Binding="{Binding Empliyee.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Мастер" Binding="{Binding Employee.FullName}" Width="*"/>
                 <DataGridTextColumn Header="Заказчик" Binding="{Binding Car.Client.FullName}" Width="*"/>
                 <DataGridTextColumn Header="Номер машины" Binding="{Binding Car.CarNumber}" Width="*"/>
                 <DataGridTextColumn Header="Марка машины" Binding="{Binding Car.CarModel.Title}" Width="*"/>
