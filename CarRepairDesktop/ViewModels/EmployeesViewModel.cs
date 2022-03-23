@@ -94,6 +94,12 @@ namespace CarRepairDesktop.ViewModels
             }
         }
 
+        private static EmployeesViewModel _instance;
+        public static EmployeesViewModel GetInstance()
+        {
+            if (_instance == null) _instance = new EmployeesViewModel();
+            return _instance;
+        }
         public EmployeesViewModel()
         {
             SortedEntities = Entities;

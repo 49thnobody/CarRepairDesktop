@@ -35,6 +35,16 @@
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
+                            <Button x:Name="btnDetails"
+                                    Click="btnDetails_Click"
+                                    Content="Подробнее"
+                                    Width="auto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
                             <Button x:Name="btnEdit"
                                     Click="btnEdit_Click"
                                     Content="Изменить"

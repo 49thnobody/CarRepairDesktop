@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarRepairDesktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,19 +26,31 @@ namespace CarRepairDesktop.Views.Clients
             InitializeComponent();
         }
 
+        ClientsViewModel context;
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            context.SelectedEntity = null;
+            Navigator.Move(new AddEditPage());
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show(context.Delete());
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            Navigator.Move(new AddEditPage());
+        }
 
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Navigator.Move(new DetailsPage());
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            context=DataContext as ClientsViewModel;
         }
     }
 }

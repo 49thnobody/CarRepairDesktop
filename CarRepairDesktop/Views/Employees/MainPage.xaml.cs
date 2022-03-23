@@ -26,5 +26,10 @@ namespace CarRepairDesktop.Views.Employees
         {
 
         }
+
+        private void btnDetails_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

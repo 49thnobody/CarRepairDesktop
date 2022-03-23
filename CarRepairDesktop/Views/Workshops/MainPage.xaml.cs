@@ -26,5 +26,10 @@ namespace CarRepairDesktop.Views.Workshops
         {
 
         }
+
+        private void btnDetails_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

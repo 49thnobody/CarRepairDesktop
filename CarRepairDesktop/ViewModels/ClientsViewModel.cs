@@ -93,6 +93,12 @@ namespace CarRepairDesktop.ViewModels
             }
         }
 
+        private static ClientsViewModel _instance;
+        public static ClientsViewModel GetInstance()
+        {
+            if (_instance == null) _instance = new ClientsViewModel();
+            return _instance;
+        }
         public ClientsViewModel()
         {
             SortedEntities = Entities;
