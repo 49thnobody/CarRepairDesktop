@@ -20,6 +20,8 @@ namespace CarRepairDesktop.ViewModels
         private Car _selectedEntity;
         public Car SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
+        public List<CarModel> CarModels { get=> _dbInstance.CarModels.ToList(); }
+        public List<Client> Owners { get => _dbInstance.Clients.ToList(); }
         public override string Check()
         {
             if (SelectedEntity == null) return "Нет машины для проверки.";

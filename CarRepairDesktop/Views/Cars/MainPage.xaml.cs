@@ -15,7 +15,7 @@ namespace CarRepairDesktop.Views.Cars
             InitializeComponent();
         }
 
-        CarsViewModel context;
+        private static CarsViewModel context;
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             context.SelectedEntity = null;
@@ -39,7 +39,8 @@ namespace CarRepairDesktop.Views.Cars
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            context = DataContext as CarsViewModel;
+            context = CarsViewModel.GetInstance();
+            DataContext = context;
         }
     }
 }

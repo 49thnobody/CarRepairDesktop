@@ -99,6 +99,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\Order.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>

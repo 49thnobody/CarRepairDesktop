@@ -7,19 +7,74 @@
       xmlns:vm="clr-namespace:CarRepairDesktop.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEditPage">
-    <Page.DataContext>
-        <vm:CarsViewModel/>
-    </Page.DataContext>
+      Title="AddEditPage"
+      Loaded="Page_Loaded">
 
-    <Grid DataContext="{Binding SelectedCar}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Номер машины:"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     Text="{Binding CarNumber}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Владелец:"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+            <ComboBox Grid.Row="1"
+                      Grid.Column="1"
+                      x:Name="cbOwner"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Марка:"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+            <ComboBox Grid.Row="2"
+                      Grid.Column="1"
+                      x:Name="cbModel"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="Мощность:"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Text="{Binding Power}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="Год выпуска:"
+                       Grid.Row="4"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="4"
+                     Grid.Column="1"
+                     Text="{Binding ManufactureYear}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="Цвет:"
+                       Grid.Row="5"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="5"
+                     Grid.Column="1"
+                     Text="{Binding Color}"/>
         </Grid>
 
         <Grid Grid.Row="1">
