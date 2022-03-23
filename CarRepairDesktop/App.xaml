@@ -53,5 +53,9 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Height" Value="25"/>
         </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
     </Application.Resources>
 </Application>

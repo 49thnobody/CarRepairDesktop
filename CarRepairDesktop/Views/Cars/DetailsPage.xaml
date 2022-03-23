@@ -7,12 +7,146 @@
        xmlns:vm="clr-namespace:CarRepairDesktop.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DetailsPage">
-    <Page.DataContext>
-        <vm:CarsViewModel/>
-    </Page.DataContext>
+      Title="DetailsPage"
+      Loaded="Page_Loaded">
 
-    <Grid DataContext="{Binding SelectedCar}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Номер машины:"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     Text="{Binding CarNumber}"
+                     IsReadOnly="True"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Владелец:"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     IsReadOnly="True">
+                <TextBox.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="Client.FullName"/>
+                        <Binding Path="Client.DriversLicense"/>
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Марка:"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     IsReadOnly="True"
+                     Text="{Binding CarModel.Title}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="Мощность:"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Text="{Binding Power}"
+                     IsReadOnly="True"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="Год выпуска:"
+                       Grid.Row="4"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="4"
+                     Grid.Column="1"
+                     Text="{Binding ManufactureYear}"
+                     IsReadOnly="True"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="Цвет:"
+                       Grid.Row="5"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="5"
+                     Grid.Column="1"
+                     Text="{Binding Color}"
+                     IsReadOnly="True"/>
+
+
+
+            <Grid Grid.Column="2"
+                  Grid.ColumnSpan="2"
+                  Grid.Row="0"
+                  Grid.RowSpan="6">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Style="{StaticResource SemiHeader}"
+                           Text="История обслуживания"
+                           Grid.Column="2"
+                           Grid.ColumnSpan="2"
+                           Grid.Row="0"/>
+                
+                <DataGrid Grid.Row="1"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding Orders}"
+                          x:Name="dgOrders">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="30" Header="ID" Binding="{Binding ID}"/>
+                        <DataGridTextColumn Width="*" Header="Механик" Binding="{Binding Employee.FullName}"/>
+                        <DataGridTextColumn Width="*" Header="Дата начала" Binding="{Binding StartDate}"/>
+                        <DataGridTextColumn Width="*" Header="План. дата окончания" Binding="{Binding PlannedEndDate}"/>
+                        <DataGridTextColumn Width="*" Header="Реал. дата окончания" Binding="{Binding RealEndDate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock Style="{StaticResource SemiHeader}"
+                           Text="Услуги"
+                           Grid.Column="2"
+                           Grid.ColumnSpan="2"
+                           Grid.Row="2"/>
+
+                <DataGrid Grid.Row="3"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding ElementName=dgOrders, Path=SelectedItem.Services}">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Title}"/>
+                        <DataGridTextColumn Width="100" Header="Стоимость" Binding="{Binding Price}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+        <Button x:Name="btnBack"
+                    Click="btnBack_Click"
+                    Content="Назад"
+                    Width="120"
+                    Grid.ColumnSpan="2"
+                Grid.Row="1"/>
     </Grid>
 </Page>

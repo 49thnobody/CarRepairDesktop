@@ -18,7 +18,7 @@ namespace CarRepairDesktop.Views.Cars
             InitializeComponent();
         }
 
-        private void btnOk_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             if (cbModel.SelectedIndex == -1 || cbOwner.SelectedIndex == -1)
             {
@@ -42,19 +42,19 @@ namespace CarRepairDesktop.Views.Cars
             }
         }
 
-        private void btnBack_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Navigator.Back();
         }
 
-        private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             model = CarsViewModel.GetInstance();
             context = model.SelectedEntity;
 
             DataContext = context;
             cbModel.ItemsSource = model.CarModels.ConvertAll(p => p.Title);
-            cbOwner.ItemsSource = model.Owners.ConvertAll(p => p.FullName + p.DriversLicense);
+            cbOwner.ItemsSource = model.Owners.ConvertAll(p => p.FullName + " " + p.DriversLicense);
             if (context == null)
             {
                 context = new Car();
