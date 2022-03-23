@@ -7,10 +7,8 @@
       xmlns:vm="clr-namespace:CarRepairDesktop.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage">
-    <Page.DataContext>
-        <vm:EmployeesViewModel/>
-    </Page.DataContext>
+      Title="MainPage"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource SemiHeader}"
-                   Text="Услуги"
+                   Text="Мастера"
                    Grid.Row="0"/>
 
         <DataGrid Grid.Row="1"

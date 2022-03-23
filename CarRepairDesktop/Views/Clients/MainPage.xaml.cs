@@ -50,7 +50,8 @@ namespace CarRepairDesktop.Views.Clients
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            context=DataContext as ClientsViewModel;
+            context = ClientsViewModel.GetInstance();
+            DataContext = context;
         }
     }
 }

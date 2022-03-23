@@ -9,9 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage"
       Loaded="Page_Loaded">
-    <Page.DataContext>
-        <vm:ClientsViewModel/>
-    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -20,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource SemiHeader}"
-                   Text="Услуги"
+                   Text="Клиенты"
                    Grid.Row="0"/>
 
         <DataGrid Grid.Row="1"

@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using CarRepairDesktop.ViewModels;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace CarRepairDesktop.Views.Orders
 {
@@ -12,19 +14,27 @@ namespace CarRepairDesktop.Views.Orders
             InitializeComponent();
         }
 
-        private void btnEdit_Click(object sender, System.Windows.RoutedEventArgs e)
+        private static OrdersViewModel context;
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigator.Move(new AddEditPage());
         }
 
-        private void btnDelete_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show(context.Delete());
         }
 
-        private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            context.SelectedEntity = null;
+            Navigator.Move(new AddEditPage());
+        }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            context = OrdersViewModel.GetInstance();
+            DataContext = context;
         }
     }
 }
