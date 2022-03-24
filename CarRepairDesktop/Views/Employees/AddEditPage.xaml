@@ -7,19 +7,66 @@
       xmlns:vm="clr-namespace:CarRepairDesktop.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEditPage">
-    <Page.DataContext>
-        <vm:EmployeesViewModel/>
-    </Page.DataContext>
+      Title="AddEditPage"
+      Loaded="Page_Loaded">
 
-    <Grid DataContext="{Binding SelectedEntity}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*ФИО:"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     Text="{Binding FullName}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Адрес:"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Text="{Binding Address}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Телефон:"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     Text="{Binding Phone}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Разряд:"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Text="{Binding Rank}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Мастерская:"
+                       Grid.Row="4"
+                       Grid.Column="0"/>
+            <ComboBox Grid.Row="4"
+                      Grid.Column="1"
+                      x:Name="cbWorkshop"/>
         </Grid>
 
         <Grid Grid.Row="1">

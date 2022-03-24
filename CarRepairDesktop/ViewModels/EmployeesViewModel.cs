@@ -19,6 +19,8 @@ namespace CarRepairDesktop.ViewModels
         private Employee _selectedEntity;
         public Employee SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
+        public List<Workshop> Workshops { get=> _dbInstance.Workshops.ToList(); }
+
         public override string Check()
         {
             if (SelectedEntity == null) return "Нет мастера для проверки.";

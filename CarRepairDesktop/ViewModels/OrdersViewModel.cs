@@ -19,6 +19,11 @@ namespace CarRepairDesktop.ViewModels
         private Order _selectedEntity;
         public Order SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
 
+        public List<Client> Clients { get=>_dbInstance.Clients.ToList(); }
+        public List<Car> Cars { get => _dbInstance.Cars.ToList(); }
+        public List<Car> CurrentClientsCars { get; set; }
+        public List<Employee> Employees { get=>_dbInstance.Employees.ToList(); }
+
         public override string Check()
         {
             if (SelectedEntity == null) return "Нет заказа для проверки.";

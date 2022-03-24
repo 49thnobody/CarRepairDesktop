@@ -24,6 +24,7 @@ namespace CarRepairDesktop.Model
             get
             {
                 List<int> ranks = Orders.ToList().ConvertAll(p => p.Employee.Rank);
+                if (ranks.Count == 0) return 1;
                 Dictionary<int, int> ranksCount = new Dictionary<int, int>();
 
                 foreach (var rank in ranks.Distinct().ToList())
@@ -32,7 +33,7 @@ namespace CarRepairDesktop.Model
                 foreach (var rank in ranks)
                     ranksCount[rank]++;
 
-                int mostCommonRank = ranksCount[ranks[0]];
+                int mostCommonRank = ranks[0];
                 foreach (var rank in ranksCount)
                 {
                     if (rank.Value > ranksCount[mostCommonRank])

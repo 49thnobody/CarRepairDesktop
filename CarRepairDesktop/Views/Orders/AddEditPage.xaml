@@ -7,11 +7,9 @@
       xmlns:vm="clr-namespace:CarRepairDesktop.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEditPage">
-      <Page.DataContext>
-          <vm:OrdersViewModel/>
-      </Page.DataContext>
-    
+      Title="AddEditPage"
+      Loaded="Page_Loaded">
+
     <Grid DataContext="{Binding SelectedEntity}">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,7 +17,67 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Заказчик:"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+            <ComboBox Grid.Row="0"
+                      Grid.Column="1"
+                      x:Name="cbClient"
+                      SelectionChanged="cbClient_SelectionChanged"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Машина:"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+            <ComboBox Grid.Row="1"
+                      Grid.Column="1"
+                      x:Name="cbCar"
+                      IsEnabled="False"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Мастер:"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+            <ComboBox Grid.Row="2"
+                      Grid.Column="1"
+                      x:Name="cbEmployee"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Дата начала:"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     x:Name="tbCurrentDate"
+                     IsReadOnly="True"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Плановая дата окончания:"
+                       Grid.Row="4"
+                       Grid.Column="0"/>
+            <DatePicker Grid.Row="4"
+                     Grid.Column="1"
+                     Text="{Binding Address}"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Плановая дата окончания:"
+                       Grid.Row="5"
+                       Grid.Column="0"/>
+            <DatePicker Grid.Row="5"
+                     Grid.Column="1"
+                     Text="{Binding Address}"/>
         </Grid>
 
         <Grid Grid.Row="1">

@@ -93,7 +93,6 @@ namespace CarRepairDesktop.ViewModels
         }
         public ServicesViewModel()
         {
-            if (_instance == null) _instance = new ServicesViewModel();
             SortedEntities = Entities;
         }
     }

@@ -7,11 +7,9 @@
       xmlns:vm="clr-namespace:CarRepairDesktop.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEditPage">
-    <Page.DataContext>
-        <vm:ServicesViewModel/>
-    </Page.DataContext>
-    
+      Title="AddEditPage"
+      Loaded="Page_Loaded">
+
     <Grid DataContext="{Binding SelectedEntity}">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,7 +17,33 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Название:"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="0"
+                      Grid.Column="1"
+                      x:Name="tbTitle"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Стоимость:"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="1"
+                      Grid.Column="1"
+                      x:Name="tbCost"/>
+            
         </Grid>
 
         <Grid Grid.Row="1">

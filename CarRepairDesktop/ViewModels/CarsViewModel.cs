@@ -95,7 +95,7 @@ namespace CarRepairDesktop.ViewModels
         }
         public CarsViewModel()
         {
-            SortedEntities = Entities;
+               SortedEntities = Entities;
         }
     }
 }

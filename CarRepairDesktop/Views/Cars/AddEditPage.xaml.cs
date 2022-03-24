@@ -67,5 +67,12 @@ namespace CarRepairDesktop.Views.Cars
                 cbOwner.SelectedIndex = model.Owners.FindIndex(p => p.DriversLicense == context.Client.DriversLicense);
             }
         }
+
+        private void btnAddCarModel_Click(object sender, RoutedEventArgs e)
+        {
+            Navigator.Move(new CarModels.AddPage());
+
+            cbModel.ItemsSource = model.CarModels.ConvertAll(p => p.Title); // dunno if needed
+        }
     }
 }

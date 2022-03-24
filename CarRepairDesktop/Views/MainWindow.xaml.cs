@@ -41,7 +41,7 @@ namespace CarRepairDesktop.Views
 
         private void btnServices_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigator.Move(new Services.MainPage());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

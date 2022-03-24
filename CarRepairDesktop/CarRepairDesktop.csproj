@@ -116,6 +116,9 @@
     <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="ViewModels\ServicesViewModel.cs" />
     <Compile Include="ViewModels\WorkshopsViewModel.cs" />
+    <Compile Include="Views\CarModels\AddPage.xaml.cs">
+      <DependentUpon>AddPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cars\AddEditPage.xaml.cs">
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
@@ -207,6 +210,10 @@
     <Resource Include="car_repair.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\CarModels\AddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Cars\AddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
