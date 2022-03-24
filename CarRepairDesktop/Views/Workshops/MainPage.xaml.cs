@@ -25,7 +25,8 @@ namespace CarRepairDesktop.Views.Workshops
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(context.Delete());
+            if (MessageBox.Show("Вы уверены, что хотите удалить запись?", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                MessageBox.Show(context.Delete());
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)

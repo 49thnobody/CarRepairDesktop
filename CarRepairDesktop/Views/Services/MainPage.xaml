@@ -45,7 +45,7 @@
                         <DataTemplate>
                             <Button x:Name="btnDelete"
                                     Click="btnDelete_Click"
-                                    Content="Изменить"
+                                    Content="Удалить"
                                     Width="auto"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
