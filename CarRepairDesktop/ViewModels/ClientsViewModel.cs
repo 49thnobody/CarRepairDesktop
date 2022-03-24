@@ -18,6 +18,7 @@ namespace CarRepairDesktop.ViewModels
 
         private Client _selectedEntity;
         public Client SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
+        public Mode Mode { get; set; }
 
         public override string Check()
         {

@@ -26,8 +26,8 @@ namespace CarRepairDesktop.Views.Cars
                 return;
             }
 
-            context.CarModel=model.CarModels[cbModel.SelectedIndex];
-            context.Client=model.Owners[cbOwner.SelectedIndex];
+            context.CarModel = model.CarModels[cbModel.SelectedIndex];
+            context.Client = model.Owners[cbOwner.SelectedIndex];
 
             switch (mode)
             {
@@ -55,16 +55,20 @@ namespace CarRepairDesktop.Views.Cars
             DataContext = context;
             cbModel.ItemsSource = model.CarModels.ConvertAll(p => p.Title);
             cbOwner.ItemsSource = model.Owners.ConvertAll(p => p.FullName + " " + p.DriversLicense);
-            if (context == null)
+            switch (model.Mode)
             {
-                context = new Car();
-                mode = Mode.Add;
-            }
-            else
-            {
-                mode = Mode.Edit;
-                cbModel.SelectedIndex = model.CarModels.FindIndex(p => p.Title == context.CarModel.Title);
-                cbOwner.SelectedIndex = model.Owners.FindIndex(p => p.DriversLicense == context.Client.DriversLicense);
+                case Mode.Add:
+                    mode = Mode.Add;
+                    if (context.Client != null)
+                        cbOwner.SelectedIndex = model.Owners.IndexOf(context.Client);
+                    break;
+                case Mode.Edit:
+                    mode = Mode.Edit;
+                    cbModel.SelectedIndex = model.CarModels.IndexOf(context.CarModel);
+                    cbOwner.SelectedIndex = model.Owners.IndexOf(context.Client);
+                    break;
+                default:
+                    break;
             }
         }
 

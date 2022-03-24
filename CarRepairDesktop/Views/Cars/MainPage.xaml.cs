@@ -18,7 +18,8 @@ namespace CarRepairDesktop.Views.Cars
         private static CarsViewModel context;
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            context.SelectedEntity = null;
+            context.SelectedEntity = new Car();
+            context.Mode = Mode.Add;
             Navigator.Move(new AddEditPage());
         }
 
@@ -29,6 +30,7 @@ namespace CarRepairDesktop.Views.Cars
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            context.Mode = Mode.Edit;
             Navigator.Move(new AddEditPage());
         }
 

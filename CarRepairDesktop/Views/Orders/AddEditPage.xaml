@@ -47,8 +47,7 @@
                        Grid.Column="0"/>
             <ComboBox Grid.Row="1"
                       Grid.Column="1"
-                      x:Name="cbCar"
-                      IsEnabled="False"/>
+                      x:Name="cbCar"/>
             <TextBlock Style="{StaticResource Tip}"
                        Text="*Мастер:"
                        Grid.Row="2"

@@ -1,4 +1,5 @@
-﻿using CarRepairDesktop.ViewModels;
+﻿using CarRepairDesktop.Model;
+using CarRepairDesktop.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,6 +18,7 @@ namespace CarRepairDesktop.Views.Orders
         private static OrdersViewModel context;
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            context.Mode = Mode.Edit;
             Navigator.Move(new AddEditPage());
         }
 
@@ -27,7 +29,8 @@ namespace CarRepairDesktop.Views.Orders
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            context.SelectedEntity = null;
+            context.SelectedEntity = new Order();
+            context.Mode = Mode.Add;
             Navigator.Move(new AddEditPage());
         }
 

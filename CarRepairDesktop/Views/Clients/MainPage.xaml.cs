@@ -1,4 +1,5 @@
-﻿using CarRepairDesktop.ViewModels;
+﻿using CarRepairDesktop.Model;
+using CarRepairDesktop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,8 @@ namespace CarRepairDesktop.Views.Clients
         ClientsViewModel context;
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            context.SelectedEntity = null;
+            context.SelectedEntity = new Client();
+            context.Mode = Mode.Add;
             Navigator.Move(new AddEditPage());
         }
 
@@ -40,6 +42,7 @@ namespace CarRepairDesktop.Views.Clients
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            context.Mode = Mode.Edit;
             Navigator.Move(new AddEditPage());
         }
 

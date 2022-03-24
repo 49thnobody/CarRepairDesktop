@@ -1,4 +1,5 @@
-﻿using CarRepairDesktop.ViewModels;
+﻿using CarRepairDesktop.Model;
+using CarRepairDesktop.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,7 +18,8 @@ namespace CarRepairDesktop.Views.Workshops
         private static WorkshopsViewModel context;
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            context.SelectedEntity = null;
+            context.SelectedEntity = new Workshop();
+            context.Mode = Mode.Add;
             Navigator.Move(new AddEditPage());
         }
 
@@ -28,6 +30,7 @@ namespace CarRepairDesktop.Views.Workshops
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            context.Mode = Mode.Edit;
             Navigator.Move(new AddEditPage());
         }
 

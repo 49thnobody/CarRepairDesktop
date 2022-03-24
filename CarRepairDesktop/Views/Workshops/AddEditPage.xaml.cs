@@ -44,14 +44,16 @@ namespace CarRepairDesktop.Views.Workshops
             context = model.SelectedEntity;
 
             DataContext = context;
-            if (context == null)
+            switch (model.Mode)
             {
-                context = new Workshop();
-                mode = Mode.Add;
-            }
-            else
-            {
-                mode = Mode.Edit;
+                case Mode.Add:
+                    mode = Mode.Add;
+                    break;
+                case Mode.Edit:
+                    mode = Mode.Edit;
+                    break;
+                default:
+                    break;
             }
         }
     }

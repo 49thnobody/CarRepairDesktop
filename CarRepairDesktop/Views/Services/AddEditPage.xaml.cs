@@ -45,14 +45,16 @@ namespace CarRepairDesktop.Views.Services
 
             DataContext = context;
 
-            if (context == null)
+            switch (model.Mode)
             {
-                context = new Service();
-                mode = Mode.Add;
-            }
-            else
-            {
-                mode = Mode.Edit;
+                case Mode.Add:
+                    mode = Mode.Add;
+                    break;
+                case Mode.Edit:
+                    mode = Mode.Edit;
+                    break;
+                default:
+                    break;
             }
         }
     }

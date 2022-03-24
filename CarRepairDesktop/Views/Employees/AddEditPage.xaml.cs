@@ -21,7 +21,7 @@ namespace CarRepairDesktop.Views.Employees
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Navigator.Back();
-            
+
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
@@ -54,15 +54,19 @@ namespace CarRepairDesktop.Views.Employees
 
             DataContext = context;
             cbWorkshop.ItemsSource = model.Workshops.ConvertAll(p => p.Title);
-            if (context == null)
+            switch (model.Mode)
             {
-                context = new Employee();
-                mode = Mode.Add;
-            }
-            else
-            {
-                mode = Mode.Edit;
-                cbWorkshop.SelectedIndex = model.Workshops.FindIndex(p => p.ID == context.Workshop.ID);
+                case Mode.Add:
+                    mode = Mode.Add;
+                    if (context.Workshop != null)
+                        cbWorkshop.SelectedIndex = model.Workshops.IndexOf(context.Workshop);
+                    break;
+                case Mode.Edit:
+                    mode = Mode.Edit;
+                    cbWorkshop.SelectedIndex = model.Workshops.IndexOf(context.Workshop);
+                    break;
+                default:
+                    break;
             }
         }
     }

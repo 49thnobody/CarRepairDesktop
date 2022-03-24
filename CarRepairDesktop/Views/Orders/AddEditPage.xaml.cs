@@ -31,7 +31,10 @@ namespace CarRepairDesktop.Views.Orders
                 return;
             }
 
-            context.Car = model.CurrentClientsCars[cbCar.SelectedIndex];
+            if (model.CurrentClientsCars != null)
+                context.Car = model.CurrentClientsCars[cbCar.SelectedIndex];
+            else
+                context.Car = model.Cars[cbCar.SelectedIndex];
             context.Employee = model.Employees[cbEmployee.SelectedIndex];
             switch (mode)
             {
@@ -57,17 +60,26 @@ namespace CarRepairDesktop.Views.Orders
             cbEmployee.ItemsSource = model.Employees.ConvertAll(p => p.FullName);
             cbCar.ItemsSource = model.Cars.ConvertAll(p => p.CarModelID + " " + p.CarNumber);
 
-            if (context == null)
+            switch (model.Mode)
             {
-                context = new Order();
-                mode = Mode.Add;
-            }
-            else
-            {
-                mode = Mode.Edit;
-                cbClient.SelectedIndex = model.Clients.FindIndex(p => p.DriversLicense == context.Car.Client.DriversLicense);
-                cbCar.SelectedIndex = model.Cars.FindIndex(p => p.CarNumber == context.CarID);
-                cbEmployee.SelectedIndex = model.Employees.FindIndex(p => p.ID == context.EmployeeID);
+                case Mode.Add:
+                    mode = Mode.Add;
+                    if (context.Car != null)
+                    {
+                        cbClient.SelectedIndex = model.Clients.IndexOf(context.Car.Client);
+                        model.CurrentClientsCars = model.Cars.FindAll(p => p.OwnerID == context.Car.Client.DriversLicense);
+                        cbCar.SelectedIndex = model.CurrentClientsCars.IndexOf(context.Car);
+                    }
+                      
+                    break;
+                case Mode.Edit:
+                    mode = Mode.Edit;
+                    cbClient.SelectedIndex = model.Clients.FindIndex(p => p.DriversLicense == context.Car.Client.DriversLicense);
+                    cbCar.SelectedIndex = model.Cars.FindIndex(p => p.CarNumber == context.CarID);
+                    cbEmployee.SelectedIndex = model.Employees.FindIndex(p => p.ID == context.EmployeeID);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -75,10 +87,9 @@ namespace CarRepairDesktop.Views.Orders
         {
             if (cbClient.SelectedItem != null)
             {
-                var client = cbClient.SelectedItem as Client;
+                var client = model.Clients[cbClient.SelectedIndex];
                 model.CurrentClientsCars = model.Cars.FindAll(p => p.OwnerID == client.DriversLicense);
-                cbCar.ItemsSource = model.CurrentClientsCars.ConvertAll(p => p.CarModelID + " " + p.CarNumber); ;
-                cbCar.IsEnabled = true;
+                cbCar.ItemsSource = model.CurrentClientsCars.ConvertAll(p => p.CarModelID + " " + p.CarNumber);
             }
         }
     }

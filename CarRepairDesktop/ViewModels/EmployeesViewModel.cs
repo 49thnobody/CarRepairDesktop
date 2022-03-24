@@ -18,6 +18,7 @@ namespace CarRepairDesktop.ViewModels
 
         private Employee _selectedEntity;
         public Employee SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
+        public Mode Mode { get; set; }
 
         public List<Workshop> Workshops { get=> _dbInstance.Workshops.ToList(); }
 

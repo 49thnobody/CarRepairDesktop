@@ -26,5 +26,10 @@ namespace CarRepairDesktop.Views.Cars
 
             DataContext = context;
         }
+
+        private void btnMakeOrder_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

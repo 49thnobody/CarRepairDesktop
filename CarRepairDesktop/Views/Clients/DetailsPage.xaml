@@ -7,12 +7,136 @@
        xmlns:vm="clr-namespace:CarRepairDesktop.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DetailsPage">
-    <Page.DataContext>
-        <vm:ClientsViewModel/>
-    </Page.DataContext>
+      Title="DetailsPage"
+      Loaded="Page_Loaded">
 
-    <Grid DataContext="{Binding SelectedEntity}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Права:"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="1"
+                     Text="{Binding DriversLicense}"
+                     IsReadOnly="True"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*ФИО:"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Text="{Binding FullName}"
+                     IsReadOnly="True"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="*Телефон:"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="2"
+                      Grid.Column="1"
+                     Text="{Binding Phone}"
+                     IsReadOnly="True"/>
+            <TextBlock Style="{StaticResource Tip}"
+                       Text="Адрес:"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Text="{Binding Address}"
+                     IsReadOnly="True"/>
+
+            <Grid Grid.Column="2"
+                  Grid.ColumnSpan="2"
+                  Grid.Row="0"
+                  Grid.RowSpan="6">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Style="{StaticResource SemiHeader}"
+                           Text="Автомобили"
+                           Grid.Column="2"
+                           Grid.ColumnSpan="2"
+                           Grid.Row="0"/>
+
+                <DataGrid Grid.Row="1"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding Cars}"
+                          x:Name="dgCars">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*" Header="Номер" Binding="{Binding CarNumber}"/>
+                        <DataGridTextColumn Width="*" Header="Марка" Binding="{Binding CarModelID}"/>
+                        <DataGridTextColumn Width="*" Header="Мощность" Binding="{Binding Power}"/>
+                        <DataGridTextColumn Width="*" Header="Год выпуска" Binding="{Binding ManufactureYear}"/>
+                        <DataGridTextColumn Width="*" Header="Цвет" Binding="{Binding Color}"/>
+                        <DataGridTemplateColumn Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnCarDetails"
+                                    Click="btnCarDetails_Click"
+                                    Content="Подробнее"
+                                    Width="auto"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnMakeOrder"
+                                    Click="btnMakeOrder_Click"
+                                    Content="На обслуживание"
+                                    Width="auto"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button x:Name="btnAddCar"
+                        Click="btnAddCar_Click"
+                        Content="Добавить"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Width="120"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnBack"
+                    Click="btnBack_Click"
+                    Content="Назад"
+                    Width="120"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"/>
+        </Grid>
     </Grid>
 </Page>

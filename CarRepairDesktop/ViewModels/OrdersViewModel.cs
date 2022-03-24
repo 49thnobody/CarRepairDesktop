@@ -23,6 +23,7 @@ namespace CarRepairDesktop.ViewModels
         public List<Car> Cars { get => _dbInstance.Cars.ToList(); }
         public List<Car> CurrentClientsCars { get; set; }
         public List<Employee> Employees { get=>_dbInstance.Employees.ToList(); }
+        public Mode Mode { get; set; }
 
         public override string Check()
         {
