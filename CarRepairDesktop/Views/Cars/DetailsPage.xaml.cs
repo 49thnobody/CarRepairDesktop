@@ -29,7 +29,9 @@ namespace CarRepairDesktop.Views.Cars
 
         private void btnMakeOrder_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            OrdersViewModel.GetInstance().SelectedEntity = new Order();
+            OrdersViewModel.GetInstance().SelectedEntity.Car = context;
+            Navigator.Move(new Orders.AddEditPage());
         }
     }
 }

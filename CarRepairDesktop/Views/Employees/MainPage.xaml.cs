@@ -36,7 +36,7 @@ namespace CarRepairDesktop.Views.Employees
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(context.Delete());
+            Navigator.Move(new DetailsPage());
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

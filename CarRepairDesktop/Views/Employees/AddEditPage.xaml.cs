@@ -21,7 +21,6 @@ namespace CarRepairDesktop.Views.Employees
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Navigator.Back();
-
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)

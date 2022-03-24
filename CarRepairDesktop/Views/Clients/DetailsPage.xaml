@@ -18,7 +18,7 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.4*"/>
                 <ColumnDefinition Width="0.8*"/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -62,7 +62,8 @@
             <TextBox Grid.Row="3"
                      Grid.Column="1"
                      Text="{Binding Address}"
-                     IsReadOnly="True"/>
+                     IsReadOnly="True"
+                     MaxLines="5"/>
 
             <Grid Grid.Column="2"
                   Grid.ColumnSpan="2"
@@ -99,7 +100,8 @@
                                     <Button x:Name="btnCarDetails"
                                     Click="btnCarDetails_Click"
                                     Content="Подробнее"
-                                    Width="auto"/>
+                                    Width="auto"
+                                            FontSize="12"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -109,7 +111,8 @@
                                     <Button x:Name="btnMakeOrder"
                                     Click="btnMakeOrder_Click"
                                     Content="На обслуживание"
-                                    Width="auto"/>
+                                    Width="auto"
+                                    FontSize="12"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
