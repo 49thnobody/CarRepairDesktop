@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -41,6 +42,59 @@ namespace CarRepairDesktop.Model
                 }
 
                 return mostCommonRank;
+            }
+        }
+    }
+
+    public partial class Employee
+    {
+        private List<Order> OrdersOldCars { get => Orders.ToList().FindAll(p => (p.Car.ManufactureYear ?? DateTime.Now.Year) <= 1939); }
+
+        public int OldCarsOrdersCount { get => OrdersOldCars.Count; }
+    }
+
+    public partial class CarModel
+    {
+        public List<Order> DelayedOrders
+        {
+            get
+            {
+                var cars = Cars.ToList();
+
+                List<Order> orders = new List<Order>();
+
+                foreach (var car in cars)
+                {
+                    orders.AddRange(car.Orders);
+                }
+
+                orders = orders.FindAll(p => p.RealEndDate > p.PlannedEndDate);
+
+                return orders;
+            }
+        }
+    }
+
+    public partial class Client
+    {
+        public Employee MyMaster
+        {
+            get
+            {
+                var cars = Cars.ToList();
+
+                var orders = new List<Order>();
+
+                foreach (var car in cars)
+                {
+                    orders.AddRange(car.Orders);
+                }
+
+                var emps = orders.ConvertAll(p => p.Employee);
+                emps = emps.Distinct().ToList();
+                if (emps.Count == 0) return null;
+                if(emps.Count == 1) return emps[0];
+                return null;
             }
         }
     }

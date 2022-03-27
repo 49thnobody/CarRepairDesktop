@@ -39,6 +39,26 @@ namespace CarRepairDesktop.Views.Orders
         {
             context = OrdersViewModel.GetInstance();
             DataContext = context;
+
+            cbModels.ItemsSource = context.CarModels.ConvertAll(p=>p.Title);
+        }
+
+        bool isClicked = false;
+        private void btnQuerry_Click(object sender, RoutedEventArgs e)
+        {
+            if(!isClicked)
+            {
+                if (cbModels.SelectedIndex == -1)
+                    return;
+                context.Querry(context.CarModels[cbModels.SelectedIndex]);
+                btnQuerry.Content = "К списку";
+                isClicked = true;
+            }
+            else
+            {
+                context.Reset();
+                isClicked = false;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@
       Title="AddEditPage"
       Loaded="Page_Loaded">
 
-    <Grid DataContext="{Binding SelectedEntity}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
@@ -68,15 +68,72 @@
                        Grid.Row="4"
                        Grid.Column="0"/>
             <DatePicker Grid.Row="4"
-                     Grid.Column="1"
-                     Text="{Binding Address}"/>
+                        Grid.Column="1"
+                        SelectedDate="{Binding PlannedEndDate, StringFormat='dd-MM-yyyy'}"
+                        x:Name="dpPlan"/>
             <TextBlock Style="{StaticResource Tip}"
-                       Text="*Плановая дата окончания:"
+                       Text="*Реальная дата окончания:"
                        Grid.Row="5"
                        Grid.Column="0"/>
             <DatePicker Grid.Row="5"
-                     Grid.Column="1"
-                     Text="{Binding Address}"/>
+                        Grid.Column="1"
+                        SelectedDate="{Binding RealEndDate, StringFormat='dd-MM-yyyy'}"
+                        x:Name="dpReal"/>
+
+            <Grid Grid.Column="2"
+                  Grid.ColumnSpan="2"
+                  Grid.Row="0"
+                  Grid.RowSpan="6">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Услуги в заказе"
+                           Style="{StaticResource SemiHeader}"/>
+
+                <ListBox Grid.Row="1"
+                         x:Name="lbServices">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding Title}"/>
+                                <Button Content="-"
+                                        x:Name="btnDeleteService"
+                                        Click="btnDeleteService_Click"
+                                        Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"
+                               Text="Выбор услуги:"
+                               Style="{StaticResource Tip}"/>
+
+                    <ComboBox x:Name="cbService"
+                              Grid.Column="1"/>
+                </Grid>
+
+                <Button Grid.Row="3"
+                        Content="Добавить"
+                        Width="120"
+                        x:Name="btnAddService"
+                        Click="btnAddService_Click"/>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="1">

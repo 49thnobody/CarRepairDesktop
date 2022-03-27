@@ -45,5 +45,13 @@ namespace CarRepairDesktop.Views.Employees
             context = EmployeesViewModel.GetInstance();
             DataContext = context;
         }
+
+        private void btnQuerry_Click(object sender, RoutedEventArgs e)
+        {
+            var emp = context.Querry();
+
+            if (emp == null) MessageBox.Show("Нет мастеров, работавших с довоенными автомобилями.");
+            else MessageBox.Show($"Мастер, наиболее часто работающий с довоенными автомобилями: {emp.FullName}");
+        }
     }
 }

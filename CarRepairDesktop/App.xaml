@@ -53,6 +53,10 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Height" Value="25"/>
         </Style>
+        
+        <Style TargetType="ListBox">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
 
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="10"/>

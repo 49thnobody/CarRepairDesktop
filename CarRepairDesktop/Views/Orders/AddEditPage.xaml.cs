@@ -1,5 +1,8 @@
 ﻿using CarRepairDesktop.Model;
 using CarRepairDesktop.ViewModels;
+using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -28,6 +31,12 @@ namespace CarRepairDesktop.Views.Orders
             if (cbEmployee.SelectedIndex == -1 || cbCar.SelectedIndex == -1 || cbClient.SelectedIndex == -1)
             {
                 MessageBox.Show("Мастер, клиент или машина не выбраны.");
+                return;
+            }
+
+            if (dpPlan.SelectedDate == null)
+            {
+                MessageBox.Show("Плановая дата не выбрана.");
                 return;
             }
 
@@ -70,7 +79,7 @@ namespace CarRepairDesktop.Views.Orders
                         model.CurrentClientsCars = model.Cars.FindAll(p => p.OwnerID == context.Car.Client.DriversLicense);
                         cbCar.SelectedIndex = model.CurrentClientsCars.IndexOf(context.Car);
                     }
-                      
+
                     break;
                 case Mode.Edit:
                     mode = Mode.Edit;
@@ -81,6 +90,10 @@ namespace CarRepairDesktop.Views.Orders
                 default:
                     break;
             }
+
+            cbService.ItemsSource = model.Services.ConvertAll(p => p.Title);
+            tbCurrentDate.Text = DateTime.Now.ToString("g");
+            context.StartDate = DateTime.Now;
         }
 
         private void cbClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,6 +104,24 @@ namespace CarRepairDesktop.Views.Orders
                 model.CurrentClientsCars = model.Cars.FindAll(p => p.OwnerID == client.DriversLicense);
                 cbCar.ItemsSource = model.CurrentClientsCars.ConvertAll(p => p.CarModelID + " " + p.CarNumber);
             }
+        }
+
+        private void btnAddService_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbService.SelectedIndex == -1) return;
+
+            context.Services.Add(model.Services[cbService.SelectedIndex]);
+            lbServices.ItemsSource = context.Services.ToList(); // очень бы хотелось, чтобы работало без этой строчки - но не работает
+            Debug.WriteLine($"{lbServices.Items.Count}");
+        }
+
+        private void btnDeleteService_Click(object sender, RoutedEventArgs e)
+        {
+            var service = lbServices.SelectedItem as Service;
+            if (service == null) return;
+
+            context.Services.Remove(service);
+            lbServices.ItemsSource = context.Services.ToList();
         }
     }
 }

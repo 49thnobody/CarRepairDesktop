@@ -23,7 +23,19 @@ namespace CarRepairDesktop.ViewModels
         public List<Car> Cars { get => _dbInstance.Cars.ToList(); }
         public List<Car> CurrentClientsCars { get; set; }
         public List<Employee> Employees { get=>_dbInstance.Employees.ToList(); }
+        public List<CarModel> CarModels { get=> _dbInstance.CarModels.ToList(); }
+        public List<Service> Services { get=> _dbInstance.Services.ToList(); }
         public Mode Mode { get; set; }
+
+        public void Querry(CarModel selecedModel)
+        {
+            SortedEntities = selecedModel.DelayedOrders;
+        }
+
+        public void Reset()
+        {
+            SortedEntities = Entities;
+        }
 
         public override string Check()
         {
@@ -43,6 +55,7 @@ namespace CarRepairDesktop.ViewModels
 
         public override string Add()
         {
+            
             var check = Check();
             if (check != string.Empty) return check;
 

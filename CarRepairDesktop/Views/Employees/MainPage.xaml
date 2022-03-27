@@ -67,10 +67,20 @@
         </DataGrid>
 
         <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
             <Button Width="120"
                     Content="Добавить"
                     x:Name="btnAdd"
                     Click="btnAdd_Click"/>
+            <Button Width="120"
+                    Content="Запрос"
+                    Grid.Column="1"
+                    x:Name="btnQuerry"
+                    Click="btnQuerry_Click"/>
         </Grid>
     </Grid>
 </Page>

@@ -58,10 +58,31 @@
         </DataGrid>
 
         <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
             <Button Width="120"
                     Content="Добавить"
                     x:Name="btnAdd"
                     Click="btnAdd_Click"/>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="140"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox Grid.Column="0"
+                          x:Name="cbModels"/>
+
+                <Button Width="120"
+                    Content="Запрос"
+                    Grid.Column="1"
+                    x:Name="btnQuerry"
+                    Click="btnQuerry_Click"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

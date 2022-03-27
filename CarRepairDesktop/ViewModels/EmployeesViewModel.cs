@@ -20,7 +20,24 @@ namespace CarRepairDesktop.ViewModels
         public Employee SelectedEntity { get => _selectedEntity; set => _selectedEntity = value; }
         public Mode Mode { get; set; }
 
-        public List<Workshop> Workshops { get=> _dbInstance.Workshops.ToList(); }
+        public List<Workshop> Workshops { get => _dbInstance.Workshops.ToList(); }
+
+        public Employee Querry()
+        {
+            var emps = Entities.FindAll(p => p.OldCarsOrdersCount > 0);
+
+            if (emps.Count == 0) return null;
+
+            var maxEmp = emps[0];
+
+            foreach (var emp in emps)
+            {
+                if (emp.OldCarsOrdersCount > maxEmp.OldCarsOrdersCount)
+                    maxEmp = emp;
+            }
+
+            return maxEmp;
+        }
 
         public override string Check()
         {

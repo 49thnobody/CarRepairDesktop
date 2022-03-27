@@ -1,5 +1,6 @@
 ﻿using CarRepairDesktop.Model;
 using CarRepairDesktop.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CarRepairDesktop.Views.Employees

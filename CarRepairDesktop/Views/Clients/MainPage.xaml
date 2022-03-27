@@ -31,6 +31,7 @@
                 <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="*"/>
                 <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="*"/>
+                <DataGridTextColumn Header="Мастер" Binding="{Binding MyMaster.FullName}" Width="*"/>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -65,6 +66,7 @@
         </DataGrid>
 
         <Grid Grid.Row="2">
+            
             <Button Width="120"
                     Content="Добавить"
                     x:Name="btnAdd"

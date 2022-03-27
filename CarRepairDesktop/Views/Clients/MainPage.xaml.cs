@@ -57,5 +57,10 @@ namespace CarRepairDesktop.Views.Clients
             context = ClientsViewModel.GetInstance();
             DataContext = context;
         }
+
+        private void btnQuerry_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
