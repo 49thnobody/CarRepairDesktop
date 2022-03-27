@@ -94,6 +94,7 @@ namespace CarRepairDesktop.Views.Orders
             cbService.ItemsSource = model.Services.ConvertAll(p => p.Title);
             tbCurrentDate.Text = DateTime.Now.ToString("g");
             context.StartDate = DateTime.Now;
+            lbServices.ItemsSource = context.Services.ToList();
         }
 
         private void cbClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
